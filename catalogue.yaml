@@ -60,8 +60,10 @@
       name: mongodb-mongosh
       state: present
 
-  - name: connnect to mongodb catalogue
-    ansible.builtin.command: mongosh mongodb://172.31.59.134:27017 --quiet --eval "db.getMongo().getDBNames().indexOf('catalogue')"('catalogue')"
+  - name: connect to mongodb catalogue
+    ansible.builtin.command: >
+      mongosh --host 172.31.59.134 --quiet
+      --eval "db.getMongo().getDBNames().indexOf('catalogue')"
     register: catalogue_output
 
   - name: load products into mongodb
