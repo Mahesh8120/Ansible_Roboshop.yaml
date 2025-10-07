@@ -61,7 +61,7 @@
       state: present
 
   - name: connnect to mongodb catalogue
-    ansible.builtin.command: mongosh mongodb --quiet --eval "db.getMongo().getDBNames().indexOf('catalogue')"
+    ansible.builtin.command: mmongosh mongodb://172.31.59.134:27017 --quiet --eval "db.getMongo().getDBNames().indexOf('catalogue')"('catalogue')"
     register: catalogue_output
 
   - name: load products into mongodb
