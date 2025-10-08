@@ -41,15 +41,14 @@
       dest: /app
       remote_src: yes
 
-  - name: install golang libraries
+  - name: Install golang libraries
     ansible.builtin.command:
-      name: "{{ item }}"
+    cmd: "{{ item }}"
+    chdir: /app
     loop:
     - go mod init dispatch
-    - go get 
+    - go get .
     - go build
-    args:
-      chdir: /app
 
   - name: copy dispatch service
     ansible.builtin.copy:
