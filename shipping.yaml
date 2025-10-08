@@ -10,6 +10,21 @@
     - maven
     - mysql
 
+  - name: Install Python3 and pip
+    ansible.builtin.package:
+      name:
+        - python3.9
+        - python3.9-pip
+      state: present
+    
+
+  - name: Install PyMySQL
+    ansible.builtin.pip:
+      name: pymysql
+      state: present
+      executable: pip3.9  # Use pip3 for Python 3
+      
+
   - name: create roboshop system user
     ansible.builtin.user:
       name: roboshop
