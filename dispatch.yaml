@@ -43,12 +43,12 @@
 
   - name: Install golang libraries
     ansible.builtin.command:
-    cmd: "{{ item }}"
-    chdir: /app
+      cmd: "{{ item }}"
+      chdir: /app
     loop:
-    - go mod init dispatch
-    - go get .
-    - go build
+       - go mod init dispatch
+       - go get .
+       - go build
 
   - name: copy dispatch service
     ansible.builtin.copy:
